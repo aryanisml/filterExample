@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/highlightsFilter.js"></script>
+    <script src="app/blankNumericFilter.js"></script>
+    <style>
+        .T {
+            background-color:yellow;
+        }
+        .F{
+            background-color:none;
+        }
+    </style>
+</head>
+<body>
+    <div ng-controller="myController as vm">
+        <input type="text" ng-model="vm.myData"/>
+       
+       <div class="{{vm.myData|highlights}}" > {{vm.myData}}</div> 
+        <br />
+        <span><b>Filter with Controller JS File</b></span>
+        <table>
+            <tbody>
+                <tr><th>without filter</th></tr>
+                <tr ng-repeat="item in vm.productItem">
+                    <td>{{item}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+         <table>
+             <tbody>
+                 <tr><th>FilterDirectlyinHTML</th></tr>
+                 <tr ng-repeat="item in vm.productItem">
+                     <td>{{item|blanknumeric}}</td>
+                 </tr>
+             </tbody>
+         </table> 
+        <br />
+        <table>
+            <tbody>
+                <tr><th>WithFilter</th></tr>
+                <tr ng-repeat="item in vm.newProductItem">
+                    <td>{{item}}</td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+</body>
+</html>
